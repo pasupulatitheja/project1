@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<html>
+<head>
+    <style>
+        h1{
+            font-size: 50px;text-shadow: 2px 2px 2px black;font-weight: bold;word-spacing: 2px;letter-spacing: 1px;color: crimson;
+        }
+        h2{
+            font-size: 30px;color: black;text-align: left;letter-spacing: 1px;word-spacing: 2px;
+        }
+        span{
+            color: black;font-weight: bolder;
+        }
+
+    </style>
+
+</head>
+<body style="background-color: lightgrey">
+<form action="{% url 'result' %}" method="post">
+    {% csrf_token %}
+<table align="center" border="0" cellpadding="6" cellspacing="6" width="800">
+    <tr>
+        <th><img  src="{% static 'images/images1/canteenicon.jpg' %}" width="200" height="100"></th>
+        <th width="400"><h1>Naveen Hotal's</h1></th>
+        <th width="200">DATE:{% now "DATE_FORMAT" %}<br>
+            TIME:{% now "TIME_FORMAT" %}</th>
+    </tr>
+</table>
+<h2>Breakfast Express</h2>
+<table align="center" cellspacing="6" cellpadding="6">
+    <tr><th><img src="{% static 'images/images1/idle.jpg' %}" width="150" height="150"><br><span>Idly</span><br>
+    42<input type="checkbox" name="t1"  value="idly"></th>
+        <th><img src="{% static 'images/images1/index.jpg' %}" width="150" height="150"><br><span>Dosa</span><br>
+    63<input type="checkbox" name="t2"  value="dosa"></th>
+        <th><img src="{% static 'images/images1/puri2.jpg' %}" width="150" height="150"><br><span>Poori</span><br>
+    63<input type="checkbox" name="t3"  value="poori"></th>
+        <th><img src="{% static 'images/images1/images.jpg' %}" width="150" height="150"><br><span>Vada</span><br>
+    60<input type="checkbox" name="t4"  value="vada"></th>
+        <th><img src="{% static 'images/images1/upma.jpg' %}" width="150" height="150"><br><span>Upma</span><br>
+    40<input type="checkbox" name="t5"  value="upma"></th>
+    </tr>
+    <tr>
+        <th><img src="{% static 'images/images1/bajji.jpg' %}" width="150" height="150"><br><span>Mysore Bajji</span><br>
+        53<input type="checkbox" name="t6" value="bajji"></th>
+        <th><img src="{% static 'images/images1/setdosa1.jpg' %}" width="150" height="150"><br><span>Set Dosa</span><br>
+        68<input type="checkbox" name="t7"  value="setdosa"></th>
+        <th><img src="{% static 'images/images1/tamato bath.jpg' %}" width="150" height="150"><br><span>Tamato Bath</span><br>
+        47<input type="checkbox" name="t8"  value="tamtobath"></th>
+        <th><img src="{% static 'images/images1/pasertu1.jpg' %}" width="150" height="150"><br><span>Paseratu</span><br>
+       68<input type="checkbox" name="t9"  value="paseratu"></th>
+        <th><img src="{% static 'images/images1/plain1.jpg' %}" width="150" height="150"><br><span>Plain Dosa</span><br>
+        50<input type="checkbox" name="t10"  value="plaindosa"></th>
+    </tr>
+    </table>
+    <h3 align="center" style="font-size: 2px;"><button type="submit" style="width: 5cm;height: 0.8cm">Total</button></h3>
+
+</form>
+</body>
+<span style="align-content: center">
+    {% if data %}
+    Total Ammount = {{ data }}<br>
+    Tax 8% = 18.00<br>
+        Totalammount+Tax 8% = {{ data2 }}
+    {% endif %}
+</span>
+</html>
